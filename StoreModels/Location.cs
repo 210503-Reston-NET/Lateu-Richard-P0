@@ -1,15 +1,12 @@
 namespace StoreModels
 {
+   /// <summary>
+    /// This class should contain all the fields and properties that define a store location.
+    /// </summary>
     public class Location
     {
-        
-    Location(string state, string city){
-        this.State=state;
-        this.City=city;
-    }
-
-         public string State{get; set;}
-        
-        public string City{get; set;}
+        public string Address { get; set; }
+        public string LocationName { get; set; }
+        //TODO: add some property for the location inventory
     }
 }
