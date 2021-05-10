@@ -6,7 +6,7 @@ namespace StoreModels
     /// <summary>
     /// This class should contain all the fields and properties that define a customer order. 
     /// </summary>
-    public class Orders
+    public class Order
     {
           public Customer Customer { get; set; }
         public Location Location { get; set; }
@@ -14,16 +14,13 @@ namespace StoreModels
 
         public List<Item> Items{get;set;}
 
-        public Orders(Customer customer,Product product,int qty, List<Item> items){
+        public Order(Customer customer,int qty, List<Item> items){
             this.Customer=customer;
-            this.Product=product;
-            this.Quantity=qty;
-            this.item=items;
+            this.Items=items;
         }
 
 
-        public Customer Customer{get;set;}
-        public Product Product{get;set;}
-        public int Quantity{get;set;}
+    
+       
     }
 }

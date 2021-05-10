@@ -9,11 +9,11 @@ namespace StoreModels
     {
         
         public string Name{get; set;}
-        public string email{get; set;}
+        public string Email{get; set;}
         public Location Location;
 
-        Customer(string name,string email,Location location){
-                this.Location=location;
+       public Customer(string name,string email){
+            
                 this.Email=email;
                 this.Name=name;
         }
