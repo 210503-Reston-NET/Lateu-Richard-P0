@@ -17,5 +17,15 @@ namespace StoreDL
             File.WriteAllText(filePath, jsonString);
             return location;
         }
+
+            List<Location> GetAllLocation(){
+
+                return new List<Location>();
+            }
+
+             Location FindLocationById(int location_id){
+
+                 return new Location();
+             }
     }
 }

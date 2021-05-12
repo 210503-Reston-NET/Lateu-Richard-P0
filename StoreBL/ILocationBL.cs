@@ -6,5 +6,8 @@ namespace StoreBL
     {
            //public void ViewLocationInventory(Location location); 
             Location AddLocation(Location location);
+            List<Location> GetAllLocation();
+
+             Location FindLocationById(int location_id);
     }
 }

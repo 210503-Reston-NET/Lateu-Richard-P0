@@ -6,6 +6,7 @@ namespace StoreModels
     public class Item
     {
         public Product Product { get; set; }
+         public Product product{set;get;}
 
         public int Quantity { get; set; }
     }

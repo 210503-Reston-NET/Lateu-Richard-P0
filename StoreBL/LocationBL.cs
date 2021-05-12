@@ -3,6 +3,7 @@ namespace StoreBL
 {
     public class LocationBL : ILocationBL
     {
+        private ILocationDL _locationDL=new LocationDL();
         public LocationBL()
         {
         }
@@ -11,5 +12,16 @@ namespace StoreBL
 
             return location;
         }
+
+          List<Location> GetAllLocation(){
+        
+
+           return _locationDL.GetAllLocation();
+
+          }
+
+             Location FindLocationById(int location_id){
+                 return _locationDL.FindLocationById(location_id);
+             }
     }
 }

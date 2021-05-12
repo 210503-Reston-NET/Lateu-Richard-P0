@@ -17,6 +17,25 @@ namespace StoreBL
              return c;
          }
 
+           public Customer GetCustomerByName(string name){
+               return _dataAccess.GetCustomerByName(Name);
+           }
+
+      List<Customer> GetAllCustomers(){
+          return _dataAccess.GetAllCustomers();
+      }
+
+      Location FindCustomerById(int customer_id){
+          return _dataAccess.FindCustomerById(customer_id);
+      }
+
+       public void PlaceOrder(Customer customer, List<Item> items){
+           return _dataAccess.PlaceOrder(customer, items);
+       }
+        public void ViewOrderHistoryByCustomer(Customer customer){
+            return _dataAccess.ViewOrderHistoryByCustomer(customer);
+        }
+
         
     }
 }
