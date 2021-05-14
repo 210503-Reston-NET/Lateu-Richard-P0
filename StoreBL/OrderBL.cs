@@ -1,16 +1,22 @@
+using StoreDL;
+using StoreModels;
+using System.Collections.Generic;
 namespace StoreBL
 {
     public class OrderBL : IOrderBL
     {
+        private IOrderDL _orderDLAccess;
+        public OrderBL() { }
+         public OrderBL(IOrderDL dataAccess  ){ this._orderDLAccess=dataAccess;}
 
- private IOrderDL _iorderDL=new IOrderDL();
-        public void DisplayOrderDetails(int order_id){
-                      _iorderDL.DisplayOrderDetails(order_id);
-        }
+         public void DisplayOrderDetails(int order_id){
+
+
+         }
        
         public void ViewOrderHistoryByLocation(Location location){
-                       _iorderDL.ViewOrderHistoryByLocation(location);
+
         }
- 
+
     }
 }

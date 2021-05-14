@@ -7,9 +7,9 @@ namespace StoreBL
         public Customer AddCustomer(Customer c);
         public Customer GetCustomerByName(string name);
 
-      List<Customer> GetAllCustomers();
+     public  List<Customer> GetAllCustomer();
 
-      Location FindCustomerById(int customer_id);
+     //public  Customer FindCustomerById(int customer_id);
 
        public void PlaceOrder(Customer customer, List<Item> items);
         public void ViewOrderHistoryByCustomer(Customer customer);

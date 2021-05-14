@@ -1,11 +1,11 @@
+using System;
+using System.Net.Mail;
 namespace StoreUI
 {
     public class Validation
     {
         
-    }
-
-    public bool IsValidEmail(string emailaddress)
+         public bool IsValidEmail(string emailaddress)
 {
     try
     {
@@ -18,4 +18,8 @@ namespace StoreUI
         return false;
     }
 }
+
+    }
+
+   
 }

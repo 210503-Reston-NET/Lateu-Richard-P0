@@ -11,7 +11,7 @@ namespace StoreModels
           public Customer Customer { get; set; }
         public Location Location { get; set; }
         public double Total { get; set; }
-        public DateTime date {get; set;}
+        //public Date date {get; set;}
 
         public List<Item> Items{get;set;}
 

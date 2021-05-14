@@ -1,5 +1,6 @@
 ﻿using System;
 using StoreModels;
+using System.Collections.Generic;
 using System.IO; // For the File IO
 using System.Text.Json; // Json serialization (marshalling and unmarshalling)
 namespace StoreDL
@@ -18,12 +19,12 @@ namespace StoreDL
             return location;
         }
 
-            List<Location> GetAllLocation(){
+         public   List<Location> GetAllLocation(){
 
                 return new List<Location>();
             }
 
-             Location FindLocationById(int location_id){
+           public  Location FindLocationById(int location_id){
 
                  return new Location();
              }

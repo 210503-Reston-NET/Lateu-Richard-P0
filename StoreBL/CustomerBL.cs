@@ -1,16 +1,17 @@
 ﻿using System;
 using StoreModels;
 using StoreDL;
+using System.Collections.Generic;
 namespace StoreBL
 {
     public class CustomerBL:ICustomerBL
     {
         private ICustomerDL _dataAccess=new CustomerDL();
 
-        /*public CustomerBL(ICustomerDL iCustomerDL )
+        public CustomerBL(ICustomerDL iCustomerDL )
         {
             this._dataAccess=iCustomerDL;
-        }*/
+        }
 
         public Customer AddCustomer(Customer c){
                    _dataAccess.AddCustomer(c);
@@ -18,22 +19,22 @@ namespace StoreBL
          }
 
            public Customer GetCustomerByName(string name){
-               return _dataAccess.GetCustomerByName(Name);
+               return _dataAccess.GetCustomerByName(name);
            }
 
-      List<Customer> GetAllCustomers(){
-          return _dataAccess.GetAllCustomers();
+      public List<Customer> GetAllCustomer(){
+          return _dataAccess.GetAllCustomer();
       }
 
-      Location FindCustomerById(int customer_id){
+      /*public Location FindCustomerById(int customer_id){
           return _dataAccess.FindCustomerById(customer_id);
-      }
+      }*/
 
        public void PlaceOrder(Customer customer, List<Item> items){
-           return _dataAccess.PlaceOrder(customer, items);
+            _dataAccess.PlaceOrder(customer, items);
        }
         public void ViewOrderHistoryByCustomer(Customer customer){
-            return _dataAccess.ViewOrderHistoryByCustomer(customer);
+             _dataAccess.ViewOrderHistoryByCustomer(customer);
         }
 
         

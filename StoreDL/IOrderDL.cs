@@ -1,3 +1,4 @@
+using StoreModels;
 namespace StoreDL
 {
     public interface IOrderDL

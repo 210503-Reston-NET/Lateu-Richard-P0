@@ -1,4 +1,6 @@
 using StoreModels;
+using StoreDL;
+using System.Collections.Generic;
 namespace StoreBL
 {
     public class LocationBL : ILocationBL
@@ -13,14 +15,14 @@ namespace StoreBL
             return location;
         }
 
-          List<Location> GetAllLocation(){
+        public  List<Location> GetAllLocation(){
         
 
            return _locationDL.GetAllLocation();
 
           }
 
-             Location FindLocationById(int location_id){
+          public   Location FindLocationById(int location_id){
                  return _locationDL.FindLocationById(location_id);
              }
     }

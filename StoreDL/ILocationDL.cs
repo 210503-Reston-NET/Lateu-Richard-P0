@@ -1,11 +1,12 @@
 using StoreModels;
+using System.Collections.Generic;
 namespace StoreDL
 {
     public interface ILocationDL
     {
           public Location AddLocation(Location L);
-            List<Location> GetAllLocation();
+           public List<Location> GetAllLocation();
 
-             Location FindLocationById(int location_id);
+           public  Location FindLocationById(int location_id);
     }
 }

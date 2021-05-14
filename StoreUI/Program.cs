@@ -10,9 +10,27 @@ namespace StoreUI
         /// This is the main method, its the starting point of your application
         /// </summary>
         /// <param name="args"></param>
-        private static ICustomerBL CustomerBL=new CustomerBL();
+        private static ICustomerBL CustomerBL=new CustomerBL(new ICustomerDL());
         static void Main(string[] args)
         {
+         //getting configurations from a config file
+            var configuration = new ConfigurationBuilder()
+            .SetBasePath(Directory.GetCurrentDirectory())
+            .AddJsonFile("appsettings.json")
+            .Build();
+
+            //setting up my db connections
+            string connectionString = configuration.GetConnectionString("ShopDB");
+            //we're building the dbcontext using the constructor that takes in options, we're setting the connection
+            //string outside the context def'n
+            DbContextOptions<demodbContext> options = new DbContextOptionsBuilder<demodbContext>()
+            .UseSqlServer(connectionString)
+            .Options;
+            //passing the options we just built
+            var context = new demodbContext(options);
+
+
+
           
         bool repeat=true;
           do{

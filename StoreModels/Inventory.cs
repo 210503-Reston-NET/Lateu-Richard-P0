@@ -7,6 +7,6 @@ namespace StoreModels
             public Location Location{set;get;}
             public Product product{set;get;}
               public int quantity{set;get;}
-               public DateTime date {get; set;}
+             //  public Date date {get; set;}
     }
 }

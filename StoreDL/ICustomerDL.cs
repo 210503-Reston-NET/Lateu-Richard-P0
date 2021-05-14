@@ -1,14 +1,20 @@
 using StoreModels;
+using System.Collections.Generic;
 namespace StoreDL
 {
     public interface ICustomerDL
     {
-      public  Customer AddCustomer(Customer customer); 
+        Customer AddCustomer(Customer customer); 
 
-      List<Customer> GetAllCustomer();
+       List<Customer> GetAllCustomer();
 
-      Location FindCustomerById(int customer_id);
+       Customer FindCustomerById(int customer_id);
 
-      public Customer GetCustomerByName(string name);
+       Customer GetCustomerByName(string name);
+
+       void PlaceOrder(Customer customer, List<Item> items);
+
+
+       void ViewOrderHistoryByCustomer(Customer c);
     }
 }
