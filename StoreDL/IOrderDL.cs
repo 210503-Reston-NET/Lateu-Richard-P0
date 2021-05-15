@@ -1,11 +1,13 @@
 using StoreModels;
+using System.Collections.Generic;
 namespace StoreDL
 {
     public interface IOrderDL
     {
-          public void DisplayOrderDetails(int order_id);
+          void DisplayOrderDetails(int order_id);
        
-        public void ViewOrderHistoryByLocation(Location location);
+         void ViewOrderHistoryByLocation(Location location);
+          void PlaceOrder(Customer customer, List<Item> items);
 
     }
 }

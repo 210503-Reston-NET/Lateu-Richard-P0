@@ -22,17 +22,15 @@ namespace StoreBL
                return _dataAccess.GetCustomerByName(name);
            }
 
-      public List<Customer> GetAllCustomer(){
-          return _dataAccess.GetAllCustomer();
+      public List<Customer> GetAllCustomers(){
+          return _dataAccess.GetAllCustomers();
       }
 
       /*public Location FindCustomerById(int customer_id){
           return _dataAccess.FindCustomerById(customer_id);
       }*/
 
-       public void PlaceOrder(Customer customer, List<Item> items){
-            _dataAccess.PlaceOrder(customer, items);
-       }
+     
         public void ViewOrderHistoryByCustomer(Customer customer){
              _dataAccess.ViewOrderHistoryByCustomer(customer);
         }

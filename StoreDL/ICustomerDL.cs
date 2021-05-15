@@ -7,15 +7,11 @@ namespace StoreDL
     {
         Customer AddCustomer(Customer customer); 
 
-       List<Customer> GetAllCustomer();
+       List<Customer> GetAllCustomers();
 
        Customer FindCustomerById(int customer_id);
 
        Customer GetCustomerByName(string name);
-
-       void PlaceOrder(Customer customer, List<Item> items);
-
-
        void ViewOrderHistoryByCustomer(Customer c);
     }
 }

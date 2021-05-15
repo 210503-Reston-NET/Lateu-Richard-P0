@@ -1,32 +1,34 @@
 ﻿using System;
-using StoreModels;
+using Model= StoreModels;
 using System.Collections.Generic;
 using System.IO; // For the File IO
 using System.Text.Json; // Json serialization (marshalling and unmarshalling)
+using Entity=StoreDL.Entities;
 namespace StoreDL
 {
     public class LocationDL : ILocationDL
     {
-        const string filePath="../StoreDL/data.json";
-         private string jsonString;
-        public LocationDL()
-        {
+       
+        
+        private Entity.projet0dbContext _context;
+        public LocationDL() { }
+        public LocationDL(Entity.projet0dbContext context){
+            this._context=context;
         }
 
-        public Location AddLocation(Location location){
-           jsonString = JsonSerializer.Serialize(location);
-            File.WriteAllText(filePath, jsonString);
+        public Model.Location AddLocation(Model.Location location){
+          
             return location;
         }
 
-         public   List<Location> GetAllLocation(){
+         public   List<Model.Location> GetAllLocation(){
 
-                return new List<Location>();
+                return new List<Model.Location>();
             }
 
-           public  Location FindLocationById(int location_id){
+           public  Model.Location FindLocationById(int location_id){
 
-                 return new Location();
+                 return new Model.Location();
              }
     }
 }

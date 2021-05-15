@@ -9,7 +9,7 @@ namespace StoreBL
        
         public void ViewOrderHistoryByLocation(Location location);
 
-     
+            void PlaceOrder(Customer customer, List<Item> items);
          
     }
 }

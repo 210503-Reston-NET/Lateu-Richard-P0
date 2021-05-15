@@ -18,5 +18,9 @@ namespace StoreBL
 
         }
 
+          public void PlaceOrder(Customer customer, List<Item> items){
+            _orderDLAccess.PlaceOrder(customer, items);
+       }
+
     }
 }

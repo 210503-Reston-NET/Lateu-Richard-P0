@@ -16,8 +16,7 @@ namespace StoreDL
         
 
         public Model.Customer AddCustomer(Model.Customer customer){
-            //This records a change in the context change tracker that we want to add this particular entity to the 
-            // db
+
          _context.Customers.Add(
                 new Entity.Customer
                 {
@@ -27,17 +26,17 @@ namespace StoreDL
                     Address=customer.Address,
                 }
             );
-            //This persists the change to the db
-            // Note: you can create a separate method that persists the changes so that you can execute repo commands in
-            //the BL and save changes only when all the operations return no exceptions
+           
             _context.SaveChanges();
             return customer;
         }
 
-        
-           public  List<Model.Customer> GetAllCustomer(){
+ 
+           public  List<Model.Customer> GetAllCustomers(){
 
-                return new List<Model.Customer>();
+                return _context.Customers.Select(
+                    customer=>new Model.Customer(customer.Name,customer.Email,customer.Phone,customer.Address)
+                ).ToList();
             }
 
            public   Model.Customer FindCustomerById(int customer_id){
@@ -49,9 +48,7 @@ namespace StoreDL
                  return new Model.Customer();
              }
 
-               public void PlaceOrder(Model.Customer customer, List<Model.Item> items){
-         throw new System.Exception("PlaceOrder yet implemented in DL");
-       }
+
         public void ViewOrderHistoryByCustomer(Model.Customer customer){
           throw new System.Exception("ViewOrderHistoryByCustomer yet implemented in DL");
         }
