@@ -60,6 +60,8 @@ namespace StoreUI
                         string address = Console.ReadLine();
                         StoreModels.Customer customer=new StoreModels.Customer(name,email,phone, address);
                         customerBL.AddCustomer(customer);
+                         Console.WriteLine("New Customer created!");
+                        Console.WriteLine(customer.ToString());
                         break;
                     case "1":
                         repeat = false;
