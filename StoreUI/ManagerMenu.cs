@@ -27,7 +27,9 @@ namespace StoreUI
                 
                 Console.WriteLine("[0] Create a Customer");
                 Console.WriteLine("[1] View  Customers");
-                Console.WriteLine("[2] Go back");
+                Console.WriteLine("[2] Find Customer By Name");
+                Console.WriteLine("[3] Go back");
+
                 string input = Console.ReadLine();
                 switch (input)
                 {
@@ -52,6 +54,9 @@ namespace StoreUI
                         ViewCustomers();
                         break;
                     case "2":
+                        FindCustomerByName();
+                        break;
+                    case "3":
                     repeat=false;
                     break;
                     default:
@@ -66,7 +71,7 @@ namespace StoreUI
          private void AddCustomer()
         {
             Console.WriteLine("Enter the details of the customer you want to add");
-            string name = _validate.ValidateName("Enter the restaurant name: ");
+            string name = _validate.ValidateName("Enter the customer name: ");
             string email = _validate.ValidateEmail("Enter customer email");
             Console.WriteLine("Enter customer  phone number");
             string phone = Console.ReadLine();
@@ -99,6 +104,17 @@ namespace StoreUI
                 }
             }
 
+        }
+
+      private void  FindCustomerByName(){
+        //Console.WriteLine("Enter the details of the customer you want to add");
+            string name = _validate.ValidateName("Enter the Custmer name: ");
+            Customer found=_icutomerBL.GetCustomerByName(name);
+            if (found.Equals(null)){
+                Console.WriteLine($"Customer not found{name}");
+            }else
+            Console.WriteLine(found.ToString());
+            
         }
         
     }
