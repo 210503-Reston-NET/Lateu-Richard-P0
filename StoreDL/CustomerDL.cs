@@ -1,30 +1,30 @@
 using System.Collections.Generic;
-using Entity=RRDL.Entities;
 using System.Linq;
+using Model=StoreModels;
+using Entity=StoreDL.Entities;
 namespace StoreDL
 {
-    public class CustomerDL:ICustomerDL
+    public class CustomerDL : ICustomerDL
     {
 
-        private Entity.demodbContext _context;
+        private Entity.projet0dbContext _context;
         public CustomerDL() { }
-        public CustomerDL(Entity.demodbContext context){
+        public CustomerDL(Entity.projet0dbContext context){
             this._context=context;
         }
 
         
 
-        public Model.Customer AddCustomer(Customer customer){
+        public Model.Customer AddCustomer(Model.Customer customer){
             //This records a change in the context change tracker that we want to add this particular entity to the 
             // db
-       
-            _context.Customers.Add(
+         _context.Customers.Add(
                 new Entity.Customer
                 {
                     Name = customer.Name,
                     Email = customer.Email,
                     Phone = customer.Phone,
-                    Address=CustomerDL.Address,
+                    Address=customer.Address,
                 }
             );
             //This persists the change to the db
@@ -35,26 +35,26 @@ namespace StoreDL
         }
 
         
-           public  List<Customer> GetAllCustomer(){
+           public  List<Model.Customer> GetAllCustomer(){
 
-                return new List<Customer>();
+                return new List<Model.Customer>();
             }
 
-           public   Customer FindCustomerById(int customer_id){
+           public   Model.Customer FindCustomerById(int customer_id){
 
-                 return new Customer();
+                 return new Model.Customer();
              }
 
-             public Customer GetCustomerByName(string name){
-                 return new Customer();
+             public Model.Customer GetCustomerByName(string name){
+                 return new Model.Customer();
              }
 
-               public void PlaceOrder(Customer customer, List<Item> items){
+               public void PlaceOrder(Model.Customer customer, List<Model.Item> items){
          throw new System.Exception("PlaceOrder yet implemented in DL");
        }
-       /* public void ViewOrderHistoryByCustomer(Customer customer){
+        public void ViewOrderHistoryByCustomer(Model.Customer customer){
           throw new System.Exception("ViewOrderHistoryByCustomer yet implemented in DL");
-        }*/
+        }
         
     }
 }

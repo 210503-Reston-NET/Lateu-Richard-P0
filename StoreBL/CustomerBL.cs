@@ -6,8 +6,8 @@ namespace StoreBL
 {
     public class CustomerBL:ICustomerBL
     {
-        private ICustomerDL _dataAccess=new CustomerDL();
-
+        private ICustomerDL _dataAccess;
+        //public CustomerBL(){}
         public CustomerBL(ICustomerDL iCustomerDL )
         {
             this._dataAccess=iCustomerDL;

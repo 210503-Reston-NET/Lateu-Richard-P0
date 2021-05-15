@@ -1,7 +1,11 @@
 ﻿using System;
-using System;
 using StoreBL;
 using StoreModels;
+using StoreDL;
+using StoreDL.Entities;
+using System.IO;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 namespace StoreUI
 {
   public class Program
@@ -10,7 +14,7 @@ namespace StoreUI
         /// This is the main method, its the starting point of your application
         /// </summary>
         /// <param name="args"></param>
-        private static ICustomerBL CustomerBL=new CustomerBL(new ICustomerDL());
+       // private static CustomerBL customerBL=new CustomerBL();
         static void Main(string[] args)
         {
          //getting configurations from a config file
@@ -20,15 +24,16 @@ namespace StoreUI
             .Build();
 
             //setting up my db connections
-            string connectionString = configuration.GetConnectionString("ShopDB");
+            string connectionString = configuration.GetConnectionString("shopDB");
             //we're building the dbcontext using the constructor that takes in options, we're setting the connection
             //string outside the context def'n
-            DbContextOptions<demodbContext> options = new DbContextOptionsBuilder<demodbContext>()
+            DbContextOptions<projet0dbContext> options = new DbContextOptionsBuilder<projet0dbContext>()
             .UseSqlServer(connectionString)
             .Options;
             //passing the options we just built
-            var context = new demodbContext(options);
-
+            var context = new projet0dbContext(options);
+           
+            CustomerBL customerBL=new CustomerBL(new CustomerDL(context));
 
 
           
@@ -49,8 +54,12 @@ namespace StoreUI
                         string name = Console.ReadLine();
                         Console.WriteLine("Email");
                         string email = Console.ReadLine();
-                        Customer customer=new Customer(name,email);
-                        CustomerBL.AddCustomer(customer);
+                        Console.WriteLine("Phone");
+                        string phone = Console.ReadLine();
+                        Console.WriteLine("Address");
+                        string address = Console.ReadLine();
+                        StoreModels.Customer customer=new StoreModels.Customer(name,email,phone, address);
+                        customerBL.AddCustomer(customer);
                         break;
                     case "1":
                         repeat = false;

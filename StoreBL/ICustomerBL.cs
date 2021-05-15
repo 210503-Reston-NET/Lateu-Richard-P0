@@ -4,15 +4,15 @@ namespace StoreBL
 {
     public interface ICustomerBL
     {
-        public Customer AddCustomer(Customer c);
-        public Customer GetCustomerByName(string name);
+         Customer AddCustomer(Customer c);
+         Customer GetCustomerByName(string name);
 
-     public  List<Customer> GetAllCustomer();
+       List<Customer> GetAllCustomer();
 
      //public  Customer FindCustomerById(int customer_id);
 
-       public void PlaceOrder(Customer customer, List<Item> items);
-        public void ViewOrderHistoryByCustomer(Customer customer);
+        void PlaceOrder(Customer customer, List<Item> items);
+         void ViewOrderHistoryByCustomer(Customer customer);
 
          
     }
