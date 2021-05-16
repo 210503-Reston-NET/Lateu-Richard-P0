@@ -47,7 +47,7 @@ namespace StoreUI
 
                 Console.WriteLine("[4] order operations");
                 Console.WriteLine("\t[40] get order details ");
-                Console.WriteLine("\t[41] get order By Location");
+                Console.WriteLine("\t[41] print order history By Location");
 
                 Console.WriteLine("[5] Go back");
 
@@ -99,7 +99,7 @@ namespace StoreUI
                         PrintOrder();                        
                         break;
                     case "41":
-                        getOrdersByLocation();
+                        ViewHitoryByLocation();
                           break;
                     case "5":
                         //Console.WriteLine("Choose the specific action for orders");
@@ -335,7 +335,21 @@ namespace StoreUI
 
         private void ViewHitoryByCustomer(){}
 
-        private void ViewHitoryByLocation(){}
+        private void ViewHitoryByLocation(){
+        Console.WriteLine("Enter Location name: ");
+              string locationName =Console.ReadLine();
+              Console.WriteLine("Requested Location Orders details ");
+               foreach(Order order in _iOrderBL.ViewOrderHistoryByLocation(locationName) ){
+                  Console.WriteLine($" Order ID: {order.Id}");
+                  Console.WriteLine("\t Order items ");
+                  foreach(Item item in _iOrderBL.DisplayOrderDetails(order.Id) ){
+                    Console.WriteLine(item.ToString());
+                  
+              }
+                  
+              }
+
+        }
 
 
      

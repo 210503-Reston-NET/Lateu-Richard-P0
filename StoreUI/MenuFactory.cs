@@ -35,7 +35,7 @@ namespace StoreUI
                 case "manager":
                     return new ManagerMenu(new CustomerBL(new CustomerDL(context))
                     ,new LocationBL(new LocationDL(context)),
-                    new OrderBL(new OrderDL(context)),
+                    new OrderBL(new OrderDL(context),new LocationDL(context)),
                     new ProductBL(new ProductDL
                     (context)),
                     new ValidationService());

@@ -20,7 +20,7 @@ namespace StoreModels
 
           public override string ToString()
         {
-             return $" Product ID: {ProductId} \t Quantity: {Quantity} \t Unit Price: {UnitPrice}";
+             return $"\t Product ID: {ProductId} \t Quantity: {Quantity} \t Unit Price: {UnitPrice}";
         }
     }
 }

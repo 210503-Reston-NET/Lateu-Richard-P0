@@ -32,8 +32,20 @@ namespace StoreDL
 
         }
        
-        public void ViewOrderHistoryByLocation(Model.Location location){
-            throw new System.Exception("ViewOrderHistoryByLocation not yet impl in DL");
+        public List<Model.Order> ViewOrderHistoryByLocation(int location_id){
+           return _context.Orders.Where(
+                    order=>order.StoreId==location_id
+                ).Select(
+                    order => new Model.Order
+                    {                         
+                        Id = order.Id,  
+                        CustomerId= order.CustomerId,    
+                        OrderDate=order.OrderDate,
+                        OrderTotal = order.OrderTotal,
+                        StoreId=order.StoreId,
+                    
+                    }
+                ).ToList();
         }
 
         public void PlaceOrder(Model.Customer customer, List<Model.Item> items){

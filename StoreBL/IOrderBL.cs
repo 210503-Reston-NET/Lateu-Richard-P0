@@ -7,7 +7,8 @@ namespace StoreBL
     {
         List<Item> DisplayOrderDetails(int order_id);
        
-         void ViewOrderHistoryByLocation(Location location);
+
+         List<Order> ViewOrderHistoryByLocation(string locationName);
 
             void PlaceOrder(Customer customer, List<Item> items);
          

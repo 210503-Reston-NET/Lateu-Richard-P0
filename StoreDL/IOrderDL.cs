@@ -6,7 +6,7 @@ namespace StoreDL
     {
           List<Item> DisplayOrderDetails(int order_id);
        
-         void ViewOrderHistoryByLocation(Location location);
+         List<Order> ViewOrderHistoryByLocation(int location_id);
           void PlaceOrder(Customer customer, List<Item> items);
 
     }
