@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 #nullable disable
 
-namespace StoreDL.Entities
+namespace StoreUI.Entities
 {
     public partial class projet0dbContext : DbContext
     {
@@ -24,7 +24,8 @@ namespace StoreDL.Entities
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<Product> Products { get; set; }
 
-       
+
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");
@@ -105,9 +106,6 @@ namespace StoreDL.Entities
 
             modelBuilder.Entity<Location>(entity =>
             {
-                entity.HasIndex(e => e.Name, "UQ__Location__737584F67BC6D94E")
-                    .IsUnique();
-
                 entity.Property(e => e.Id).HasColumnName("id");
 
                 entity.Property(e => e.Address)
@@ -145,9 +143,6 @@ namespace StoreDL.Entities
             modelBuilder.Entity<Product>(entity =>
             {
                 entity.ToTable("products");
-
-                entity.HasIndex(e => e.Name, "UQ__products__737584F68787F0C1")
-                    .IsUnique();
 
                 entity.Property(e => e.Id).HasColumnName("id");
 

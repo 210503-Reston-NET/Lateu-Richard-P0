@@ -7,6 +7,7 @@ namespace StoreModels
     {
         public string Address { get; set; }
         public string Name { get; set; }
+         public int Id { get; set; }
 
         public Location(string name,string Address){
            this.Name=name;

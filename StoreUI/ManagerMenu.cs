@@ -9,13 +9,19 @@ namespace StoreUI
         private ICustomerBL _icutomerBL;
         private ILocationBL _iLocationBL;
         private IOrderBL _iOrderBL;
+        private IProductBL _iProductBL;
         private IValidationService _validate;
 
-        public ManagerMenu(ICustomerBL icutomerBL, ILocationBL iLocationBL, IOrderBL iOrderBL, IValidationService validate)
+        public ManagerMenu(ICustomerBL icutomerBL,
+         ILocationBL iLocationBL,
+          IOrderBL iOrderBL, 
+          IProductBL iProductBL,
+          IValidationService validate)
         {
             this._icutomerBL = icutomerBL;
             this._iLocationBL = iLocationBL;
             this._iOrderBL = iOrderBL;
+            this._iProductBL=iProductBL;
             this._validate = validate;
         }
 
@@ -33,7 +39,13 @@ namespace StoreUI
                 Console.WriteLine("\t[20] Create a Location");
                 Console.WriteLine("\t[21] View  Locations");
                 Console.WriteLine("\t[22] Find Location By Name");
-                Console.WriteLine("[3] Go back");
+                
+                Console.WriteLine("[3] Product operations");
+                Console.WriteLine("\t[30] create Product ");
+                Console.WriteLine("\t[31] View Products");
+                Console.WriteLine("\t[32] Find Product By Name");
+
+                Console.WriteLine("[4] Go back");
 
                 string input = Console.ReadLine();
                 switch (input)
@@ -63,9 +75,23 @@ namespace StoreUI
                     case "22":
                         FindLocationByName();
                         break;
+                  
                     case "3":
-                    repeat=false;
+                    Console.WriteLine("Choose the specific action on Product");
                     break;
+                    case "30":
+                        AddProduct();
+                        break;
+                    case "31":
+                        ViewProducts();
+                        break;
+                    case "32":
+                        FindProductByName();
+                        break;
+                    case "4":
+                        //Console.WriteLine("Choose the specific action for orders");
+                        repeat=false;
+                        break;
                     default:
                         Console.WriteLine("Invalid input");
                         break;
@@ -75,6 +101,11 @@ namespace StoreUI
             
         }
 
+        
+
+/// <summary>
+/// Location UI Calls
+/// </summary>
 
          private void AddLocation()
         {
@@ -178,7 +209,6 @@ namespace StoreUI
         }
 
       private void  FindCustomerByName(){
-        //Console.WriteLine("Enter the details of the customer you want to add");
             string name = _validate.ValidateName("Enter the Custmer name: ");
 
             try{
@@ -190,12 +220,84 @@ namespace StoreUI
 
             }catch(NullReferenceException e){
                Console.WriteLine($"Customer {name} not found");
-            }
-           
-           
+            }    
             
             
         }
+        
+        /// <summary>
+        /// Product UI Calls
+        /// </summary>
+        
+        private void AddProduct(){
+             Console.WriteLine("Enter the details of the Product you want to add");
+            Console.WriteLine("Enter Product  Name");
+            string name = Console.ReadLine();
+            Console.WriteLine("Enter Product barcode");
+            string barcode=Console.ReadLine();
+            Console.WriteLine("Enter Product price");
+            string p =Console.ReadLine();
+            double price=Double.Parse(p);
+            Console.WriteLine("Enter Product intial stock");
+            string st=Console.ReadLine();
+            int stock=int.Parse(st);
+            try
+            {
+                    
+           Product productObj=new Product(name, barcode,price,stock);
+           Product newProduct=_iProductBL.AddProduct(productObj);
+           Console.WriteLine("New Product created!");
+           Console.WriteLine(newProduct.ToString());
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+        private void FindProductByName(){
+            string name = _validate.ValidateName("Enter the Product name: ");
+
+            try{
+                Product found=_iProductBL.FindProductByName(name);
+                 if (!found.Equals(null)){
+                     Console.WriteLine("product details\n");
+                     Console.WriteLine(found.ToString());
+                     }
+
+            }catch(NullReferenceException e){
+               Console.WriteLine($"Product {name} not found");
+            } 
+        }
+        private void ViewProducts(){
+             List<Product> products = _iProductBL.GetAllProducts();
+            if (products.Count == 0) Console.WriteLine("No Product found");
+            else
+            {
+                  Console.WriteLine("Product list");
+                foreach (Product product in products)
+                {
+                    Console.WriteLine(product.ToString());
+                }
+            }
+        }
+
+
+
+    /// <summary>
+    /// Order UI Calls
+    /// </summary>
+
+       private void Purchase(){}
+        private void OrderDetails(){}
+        private void PlaceOrder(){}
+
+        private void ViewHitoryByCustomer(){}
+
+        private void ViewHitoryByLocation(){}
+
+
+     
         
     }
 }

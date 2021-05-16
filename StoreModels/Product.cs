@@ -7,20 +7,29 @@ namespace StoreModels
     {
 
         public Product(){}
-       public string ProductName { get; set; }
-     public double Price { get; set; }
+
+                public int Id { get; set; }
+        public string Name { get; set; }
+        public double Price { get; set; }
+        public string Barcode { get; set; }
+  
 
         
-        public int availableStock{get;set;}
+        public int AvailableStock{get;set;}
 
         //todo: add more properties to define a product (maybe a category?)
-          public Product(string name, double price,int stock){
-              this.ProductName=name;
+          public Product(string name,string barcode ,double price,int stock){
+              this.Name=name;
+              this.Barcode=barcode;
               this.Price=price;
-              this.availableStock=stock;
+              this.AvailableStock=stock;
           }
         
 
- 
+   public override string ToString()
+        {
+          //  return base.ToString();
+             return $" Name: {Name} \t Barcode: {Barcode} \t Price Unit: {Price} \t Stock:{AvailableStock} \n";
+        }
     }
 }

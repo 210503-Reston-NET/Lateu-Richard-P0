@@ -33,7 +33,12 @@ namespace StoreUI
             switch (menuType.ToLower())
             {
                 case "manager":
-                    return new ManagerMenu(new CustomerBL(new CustomerDL(context)),new LocationBL(new LocationDL(context)),new OrderBL(new OrderDL(context)),new ValidationService());
+                    return new ManagerMenu(new CustomerBL(new CustomerDL(context))
+                    ,new LocationBL(new LocationDL(context)),
+                    new OrderBL(new OrderDL(context)),
+                    new ProductBL(new ProductDL
+                    (context)),
+                    new ValidationService());
                 case "saleagent":
                     return new SaleRepresentativeMenu();
                    // return new RestaurantMenu(new RestaurantBL(new RepoFile()), new ValidationService());

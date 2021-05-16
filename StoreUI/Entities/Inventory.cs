@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 #nullable disable
 
-namespace StoreDL.Entities
+namespace StoreUI.Entities
 {
     public partial class Inventory
     {
