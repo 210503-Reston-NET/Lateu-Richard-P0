@@ -20,11 +20,11 @@ namespace StoreBL
 
          /// Location BL
           //public void ViewLocationInventory(Location location); 
-           Location AddLocation(Location location);
+          /* Location AddLocation(Location location);
            List<Location> GetAllLocation();
 
           Location FindLocationById(int location_id);
-
+*/
         ///order BL
          void DisplayOrderDetails(int order_id);
        

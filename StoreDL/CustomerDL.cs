@@ -47,10 +47,9 @@ namespace StoreDL
              public Model.Customer GetCustomerByName(string name){
                   
             Entity.Customer found = _context.Customers.FirstOrDefault(customer => customer.Name == name);
-            // we get the results and return null if nothing is found, otherwise return a Model.Restaurant that was found
             if (found == null) return null;
             return new Model.Customer(found.Name, found.Email, found.Phone,found.Address);
-                 return new Model.Customer();
+                // return new Model.Customer();
              }
 
 

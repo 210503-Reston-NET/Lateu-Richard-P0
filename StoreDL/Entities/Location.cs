@@ -5,9 +5,9 @@ using System.Collections.Generic;
 
 namespace StoreDL.Entities
 {
-    public partial class StoreLocation
+    public partial class Location
     {
-        public StoreLocation()
+        public Location()
         {
             Inventories = new HashSet<Inventory>();
             Orders = new HashSet<Order>();

@@ -4,9 +4,9 @@ namespace StoreDL
 {
     public interface ILocationDL
     {
-          public Location AddLocation(Location L);
-           public List<Location> GetAllLocation();
-
-           public  Location FindLocationById(int location_id);
+           Location AddLocation(Location L);
+           List<Location> GetAllLocations();
+            Location FindLocationByName(string locationName);
+           void ViewLocationInventory(string name); 
     }
 }

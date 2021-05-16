@@ -5,25 +5,30 @@ namespace StoreBL
 {
     public class LocationBL : ILocationBL
     {
-        private ILocationDL _locationDL=new LocationDL();
+        private ILocationDL _locationDL;
         public LocationBL()
         {
+        }
+         public LocationBL(ILocationDL locationDL)
+        {
+            this._locationDL=locationDL;
         }
 
         public Location AddLocation(Location location){
 
-            return location;
+            return _locationDL.AddLocation(location);
         }
 
-        public  List<Location> GetAllLocation(){
-        
-
-           return _locationDL.GetAllLocation();
-
+        public  List<Location> GetAllLocations(){
+           return _locationDL.GetAllLocations();
           }
 
-          public   Location FindLocationById(int location_id){
-                 return _locationDL.FindLocationById(location_id);
+          public   Location FindLocationByName(string location){
+                 return _locationDL.FindLocationByName(location);
              }
+
+        public void ViewLocationInventory(string name){
+            
+        }
     }
 }

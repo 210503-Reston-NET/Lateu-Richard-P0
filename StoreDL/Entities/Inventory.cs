@@ -14,6 +14,6 @@ namespace StoreDL.Entities
         public DateTime OrderDate { get; set; }
 
         public virtual Product Product { get; set; }
-        public virtual StoreLocation Store { get; set; }
+        public virtual Location Store { get; set; }
     }
 }

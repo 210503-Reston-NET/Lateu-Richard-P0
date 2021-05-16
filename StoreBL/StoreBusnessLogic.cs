@@ -58,6 +58,7 @@ namespace StoreBL
             return location;
         }
 
+/*
         public  List<Location> GetAllLocation(){
         
 
@@ -67,8 +68,8 @@ namespace StoreBL
 
           public   Location FindLocationById(int location_id){
                  return _ilocationDL.FindLocationById(location_id);
-             }
-      ///
+             }*/
+      
 
       
 

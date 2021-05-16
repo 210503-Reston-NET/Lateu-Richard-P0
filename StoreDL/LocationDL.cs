@@ -1,8 +1,7 @@
 ﻿using System;
 using Model= StoreModels;
 using System.Collections.Generic;
-using System.IO; // For the File IO
-using System.Text.Json; // Json serialization (marshalling and unmarshalling)
+using System.Linq;
 using Entity=StoreDL.Entities;
 namespace StoreDL
 {
@@ -17,18 +16,37 @@ namespace StoreDL
         }
 
         public Model.Location AddLocation(Model.Location location){
-          
-            return location;
+              _context.Locations.Add(
+                new Entity.Location
+                {
+                     Name = location.Name,
+                    Address=location.Address,
+                   
+                  
+                }
+            );
+           
+            _context.SaveChanges();
+            return location;          
         }
 
-         public   List<Model.Location> GetAllLocation(){
+         public   List<Model.Location> GetAllLocations(){
 
-                return new List<Model.Location>();
+              return _context.Locations.Select(
+                    location=>new Model.Location(location.Name,location.Address)
+                ).ToList();
+               
             }
 
-           public  Model.Location FindLocationById(int location_id){
+           public  Model.Location FindLocationByName(string name){              
+                 Entity.Location response = _context.Locations.FirstOrDefault(location => location.Name == name);
+                if (response == null) return null;
+                return new Model.Location(response.Name,response.Address);
+                              
+             }
 
-                 return new Model.Location();
+             public  void ViewLocationInventory(string name){
+
              }
     }
 }

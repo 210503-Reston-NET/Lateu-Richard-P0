@@ -19,7 +19,7 @@ namespace StoreDL.Entities
         public int? StoreId { get; set; }
 
         public virtual Customer Customer { get; set; }
-        public virtual StoreLocation Store { get; set; }
+        public virtual Location Store { get; set; }
         public virtual ICollection<Item> Items { get; set; }
     }
 }

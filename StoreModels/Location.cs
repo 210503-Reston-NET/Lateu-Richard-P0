@@ -6,7 +6,19 @@ namespace StoreModels
     public class Location
     {
         public string Address { get; set; }
-        public string LocationName { get; set; }
-        //TODO: add some property for the location inventory
+        public string Name { get; set; }
+
+        public Location(string name,string Address){
+           this.Name=name;
+           this.Address=Address;
+        
+        }
+     
+
+         public override string ToString()
+        {
+          //  return base.ToString();
+             return $" LocationName: {Name} \t Address: {Address}";
+        }
     }
 }
