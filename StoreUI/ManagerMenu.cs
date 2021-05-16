@@ -10,6 +10,7 @@ namespace StoreUI
         private ILocationBL _iLocationBL;
         private IOrderBL _iOrderBL;
         private IProductBL _iProductBL;
+       
         private IValidationService _validate;
 
         public ManagerMenu(ICustomerBL icutomerBL,
@@ -23,6 +24,7 @@ namespace StoreUI
             this._iOrderBL = iOrderBL;
             this._iProductBL=iProductBL;
             this._validate = validate;
+        
         }
 
         public void   Start(){
@@ -48,6 +50,7 @@ namespace StoreUI
                 Console.WriteLine("[4] order operations");
                 Console.WriteLine("\t[40] get order details ");
                 Console.WriteLine("\t[41] print order history By Location");
+                Console.WriteLine("\t[42] print order history By Customer");
 
                 Console.WriteLine("[5] Go back");
 
@@ -101,6 +104,9 @@ namespace StoreUI
                     case "41":
                         ViewHitoryByLocation();
                           break;
+                    case "42":
+                         ViewHitoryByCustomer();
+                         break;
                     case "5":
                         //Console.WriteLine("Choose the specific action for orders");
                         repeat=false;
@@ -333,7 +339,20 @@ namespace StoreUI
               
         }
 
-        private void ViewHitoryByCustomer(){}
+        private void ViewHitoryByCustomer(){
+             Console.WriteLine("Enter Custmer name: ");
+              string customerName =Console.ReadLine();
+              Console.WriteLine("Requested Customer History details ");
+               foreach(Order order in _iOrderBL.ViewOrderHistoryByCustomer(customerName) ){
+                  Console.WriteLine($" Order ID: {order.Id}");
+                  Console.WriteLine("\t Order items ");
+                  foreach(Item item in _iOrderBL.DisplayOrderDetails(order.Id) ){
+                    Console.WriteLine(item.ToString());
+                  
+              }
+                  
+              }
+        }
 
         private void ViewHitoryByLocation(){
         Console.WriteLine("Enter Location name: ");

@@ -48,8 +48,8 @@ namespace StoreDL
                   
             Entity.Customer found = _context.Customers.FirstOrDefault(customer => customer.Name == name);
             if (found == null) return null;
-            return new Model.Customer(found.Name, found.Email, found.Phone,found.Address);
-                // return new Model.Customer();
+            return new Model.Customer(found.Id,found.Name, found.Email, found.Phone,found.Address);
+                
              }
 
 

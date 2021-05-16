@@ -7,7 +7,7 @@ namespace StoreModels
     /// </summary>
     public class Customer
     {
-        
+        public int Id {get; set;}
         public string Name{get; set;}
         public string Email{get; set;}
          public string Phone { get; set; }
@@ -18,6 +18,15 @@ namespace StoreModels
        public Customer(string name,string email,string phone, string address){
             
             
+                this.Name=name;
+                this.Email=email;
+                this.Phone=phone;
+                this.Address=address;
+        }
+
+        public Customer(int Id, string name,string email,string phone, string address):this(name,email, phone, address){
+            
+            this.Id=Id;
                 this.Name=name;
                 this.Email=email;
                 this.Phone=phone;

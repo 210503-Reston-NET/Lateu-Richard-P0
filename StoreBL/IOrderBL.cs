@@ -10,6 +10,8 @@ namespace StoreBL
 
          List<Order> ViewOrderHistoryByLocation(string locationName);
 
+         List<Order> ViewOrderHistoryByCustomer(string  customerName);
+
             void PlaceOrder(Customer customer, List<Item> items);
          
     }

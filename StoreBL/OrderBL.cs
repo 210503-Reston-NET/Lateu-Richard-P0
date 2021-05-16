@@ -7,10 +7,12 @@ namespace StoreBL
     {
         private IOrderDL _orderDLAccess;
         private ILocationDL _locationDL;
+        private ICustomerDL _customerDL;
         public OrderBL() { }
-         public OrderBL(IOrderDL dataAccess,ILocationDL locationDL  ){ 
+         public OrderBL(IOrderDL dataAccess,ILocationDL locationDL, ICustomerDL customerDL){ 
            this._orderDLAccess=dataAccess;
            this._locationDL=locationDL;
+           this._customerDL=customerDL;
            }
 
          public List<Item> DisplayOrderDetails(int order_id){
@@ -25,6 +27,14 @@ namespace StoreBL
           return new List<Order>();
 
         }
+
+         public  List<Order> ViewOrderHistoryByCustomer(string  customerName){
+
+            Customer customer=_customerDL.GetCustomerByName(customerName);
+          if(!customer.Equals(null))
+            return _orderDLAccess.ViewOrderHistoryByCustomer(customer.Id);
+          return new List<Order>();
+          }
 
           public void PlaceOrder(Customer customer, List<Item> items){
             _orderDLAccess.PlaceOrder(customer, items);

@@ -48,6 +48,22 @@ namespace StoreDL
                 ).ToList();
         }
 
+       public List<Model.Order> ViewOrderHistoryByCustomer(int customer_id){
+            return _context.Orders.Where(
+                    order=>order.CustomerId==customer_id
+                ).Select(
+                    order => new Model.Order
+                    {                         
+                        Id = order.Id,  
+                        CustomerId= order.CustomerId,    
+                        OrderDate=order.OrderDate,
+                        OrderTotal = order.OrderTotal,
+                        StoreId=order.StoreId,
+                    
+                    }
+                ).ToList();
+       }
+
         public void PlaceOrder(Model.Customer customer, List<Model.Item> items){
          throw new System.Exception("PlaceOrder yet implemented in DL");
        }
