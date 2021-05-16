@@ -9,5 +9,7 @@ namespace StoreBL
       List<Location> GetAllLocations();
 
         Location FindLocationByName(string locationName);
+
+         List<Order> ViewLocationOrders(string name); 
     }
 }

@@ -5,9 +5,9 @@ namespace StoreBL
 {
     public interface IOrderBL
     {
-       public void DisplayOrderDetails(int order_id);
+        List<Item> DisplayOrderDetails(int order_id);
        
-        public void ViewOrderHistoryByLocation(Location location);
+         void ViewOrderHistoryByLocation(Location location);
 
             void PlaceOrder(Customer customer, List<Item> items);
          

@@ -1,7 +1,7 @@
 
 add a new customer  OK
 search customers by name  OK
-display details of an order
+display details of an order OK
 place orders to store locations for customers
 view order history of customer
 view order history of location

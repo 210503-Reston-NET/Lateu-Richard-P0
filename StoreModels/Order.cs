@@ -8,19 +8,29 @@ namespace StoreModels
     /// </summary>
     public class Order
     {
-          public Customer Customer { get; set; }
-        public Location Location { get; set; }
-        public double Total { get; set; }
+          //public Customer Customer { get; set; }
+        //public Location Location { get; set; }
+        public int CustomerId { get; set; }
+        public int StoreId { get; set; }
+        public DateTime OrderDate { get; set; }
+        public double OrderTotal { get; set; }
+        public int Id { get; set; }
         //public Date date {get; set;}
 
         public List<Item> Items{get;set;}
-
-        public Order(Customer customer,int qty, List<Item> items){
-            this.Customer=customer;
-            this.Items=items;
+        public Order(){}
+        public Order(int customer_id, int location_id,DateTime orderDate,double orderTotal){
+            this.CustomerId=customer_id;
+            this.StoreId=location_id;
+            this.OrderDate=orderDate;
+            this.OrderTotal=orderTotal;
         }
 
-
+          public override string ToString()
+        {
+          //  return base.ToString();
+             return $" Customer ID: {CustomerId} \t Location ID: {StoreId}\t Date {OrderDate} \t Items: {Items}\n";
+        }
     
        
     }

@@ -3,6 +3,7 @@ using Model= StoreModels;
 using System.Collections.Generic;
 using System.Linq;
 using Entity=StoreDL.Entities;
+using Microsoft.EntityFrameworkCore;
 namespace StoreDL
 {
     public class ProductDL : IProductDL

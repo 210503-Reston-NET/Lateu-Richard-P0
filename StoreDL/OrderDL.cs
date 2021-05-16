@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using Model= StoreModels;
 using Entity=StoreDL.Entities;
+using Microsoft.EntityFrameworkCore;
+using System.Linq;
 namespace StoreDL
 {
     public class OrderDL : IOrderDL
@@ -14,9 +16,20 @@ namespace StoreDL
         }
     
 
-        public void DisplayOrderDetails(int order_id){
+        public List<Model.Item> DisplayOrderDetails(int order_id){
+            return _context.Items.Where(
+                    item=>item.OrderId==order_id
+                ).Select(
+                    item => new Model.Item
+                    {
+                        OrderId = item.OrderId,       
+                        ProductId=item.ProductId,
+                        Quantity=item.Quantity,
+                        UnitPrice = item.UnitPrice,
+                    
+                    }
+                ).ToList();
 
-            throw new System.Exception("DisplayOrderDetails not yet impl in DL");
         }
        
         public void ViewOrderHistoryByLocation(Model.Location location){

@@ -45,7 +45,11 @@ namespace StoreUI
                 Console.WriteLine("\t[31] View Products");
                 Console.WriteLine("\t[32] Find Product By Name");
 
-                Console.WriteLine("[4] Go back");
+                Console.WriteLine("[4] order operations");
+                Console.WriteLine("\t[40] get order details ");
+                Console.WriteLine("\t[41] get order By Location");
+
+                Console.WriteLine("[5] Go back");
 
                 string input = Console.ReadLine();
                 switch (input)
@@ -77,8 +81,8 @@ namespace StoreUI
                         break;
                   
                     case "3":
-                    Console.WriteLine("Choose the specific action on Product");
-                    break;
+                        Console.WriteLine("Choose the specific action on Product");
+                        break;
                     case "30":
                         AddProduct();
                         break;
@@ -89,6 +93,15 @@ namespace StoreUI
                         FindProductByName();
                         break;
                     case "4":
+                        Console.WriteLine("Choose the specific action on Order");
+                        break;
+                    case "40":
+                        PrintOrder();                        
+                        break;
+                    case "41":
+                        getOrdersByLocation();
+                          break;
+                    case "5":
                         //Console.WriteLine("Choose the specific action for orders");
                         repeat=false;
                         break;
@@ -158,11 +171,23 @@ namespace StoreUI
 
             }catch(NullReferenceException e){
             Console.WriteLine($"Location {name} not found");
+            e.ToString();
             }
             
             
         }
-        
+        private void getOrdersByLocation(){
+             Console.WriteLine("Enter the Location name: ");
+            string locationName =Console.ReadLine();
+            List<Order> orders=_iLocationBL.ViewLocationOrders( locationName);
+            printOrderDetails(orders);
+        }
+
+        private void printOrderDetails(List<Order> orders){
+            foreach (Order order in orders){
+                order.ToString();
+            }
+        }
 
 
 
@@ -220,6 +245,7 @@ namespace StoreUI
 
             }catch(NullReferenceException e){
                Console.WriteLine($"Customer {name} not found");
+               e.ToString();
             }    
             
             
@@ -250,9 +276,10 @@ namespace StoreUI
            Console.WriteLine(newProduct.ToString());
 
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
-                Console.WriteLine(ex.Message);
+                //Console.WriteLine(ex.Message);
+                e.ToString();
             }
         }
         private void FindProductByName(){
@@ -266,7 +293,9 @@ namespace StoreUI
                      }
 
             }catch(NullReferenceException e){
+               
                Console.WriteLine($"Product {name} not found");
+                e.ToString();
             } 
         }
         private void ViewProducts(){
@@ -291,6 +320,18 @@ namespace StoreUI
        private void Purchase(){}
         private void OrderDetails(){}
         private void PlaceOrder(){}
+
+        private void PrintOrder(){
+            Console.WriteLine("Enter Order ID: ");
+              string i =Console.ReadLine();
+              int id=int.Parse(i);
+              Console.WriteLine("Requested Order details ");
+              foreach(Item item in _iOrderBL.DisplayOrderDetails(id) ){
+                  Console.WriteLine(item.ToString());
+                  
+              }
+              
+        }
 
         private void ViewHitoryByCustomer(){}
 

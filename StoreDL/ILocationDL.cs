@@ -6,7 +6,9 @@ namespace StoreDL
     {
            Location AddLocation(Location L);
            List<Location> GetAllLocations();
-            Location FindLocationByName(string locationName);
-           void ViewLocationInventory(string name); 
+           Location FindLocationByName(string locationName);
+
+           List<Order> ViewLocationOrders(string name); 
+         //  List<Item> ViewLocationInventory(string name); 
     }
 }

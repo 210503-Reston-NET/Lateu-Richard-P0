@@ -14,6 +14,12 @@ namespace StoreModels
            this.Address=Address;
         
         }
+
+          // Constructor chaining
+        public Location(int id, string name, string Address) : this(name,Address)
+        {
+            this.Id = id;
+        }
      
 
          public override string ToString()

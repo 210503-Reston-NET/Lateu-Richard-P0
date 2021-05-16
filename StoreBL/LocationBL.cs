@@ -27,6 +27,11 @@ namespace StoreBL
                  return _locationDL.FindLocationByName(location);
              }
 
+
+       public  List<Order> ViewLocationOrders(string locationName){
+            return _locationDL.ViewLocationOrders(locationName);
+        }
+
         public void ViewLocationInventory(string name){
             
         }

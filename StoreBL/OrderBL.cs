@@ -9,9 +9,9 @@ namespace StoreBL
         public OrderBL() { }
          public OrderBL(IOrderDL dataAccess  ){ this._orderDLAccess=dataAccess;}
 
-         public void DisplayOrderDetails(int order_id){
+         public List<Item> DisplayOrderDetails(int order_id){
 
-
+          return _orderDLAccess.DisplayOrderDetails(order_id);
          }
        
         public void ViewOrderHistoryByLocation(Location location){
