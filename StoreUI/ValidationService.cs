@@ -21,10 +21,15 @@ namespace StoreUI
     {
         Match match = regex.Match(response); 
         repeat=match.Success;
+       // Console.WriteLine(repeat);
      
-    if (!repeat)  Console.WriteLine("Invalid Email Address");
-
-      
+    if (repeat){
+        repeat=false;
+    }else{
+        
+        Console.WriteLine("Invalid Email Address");
+        repeat=true;
+    }        
   
     }
 
