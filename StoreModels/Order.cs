@@ -15,22 +15,24 @@ namespace StoreModels
         public int StoreId { get; set; }
         public DateTime OrderDate { get; set; }
         public double OrderTotal { get; set; }
-        //public Date date {get; set;}
+        public string Name  {get; set;}
 
         public List<Item> Items{get;set;}
         public Order(){}
-        public Order(int customer_id, int location_id,DateTime orderDate,double orderTotal){
+        public Order(int customer_id, int location_id,DateTime orderDate,double orderTotal,string name){
             this.CustomerId=customer_id;
             this.StoreId=location_id;
             this.OrderDate=orderDate;
             this.OrderTotal=orderTotal;
+            this.Name=name;
         }
 
-         public Order(int Id,int customer_id, int location_id,DateTime orderDate,double orderTotal):this(customer_id,location_id,orderDate,orderTotal){
+         public Order(int Id,int customer_id, int location_id,DateTime orderDate,double orderTotal,string name):this(customer_id,location_id,orderDate,orderTotal,name){
             this.CustomerId=customer_id;
             this.StoreId=location_id;
             this.OrderDate=orderDate;
             this.OrderTotal=orderTotal;
+            this.Name=name;
             this.Id=Id;
 
         }
@@ -38,7 +40,7 @@ namespace StoreModels
           public override string ToString()
         {
           //  return base.ToString();
-             return $" ID {Id}\t Customer ID: {CustomerId} \t Location ID: {StoreId}\t Date {OrderDate} \t Items: {Items}\n";
+             return $" Name {Name}\t Customer ID: {CustomerId} \t Location ID: {StoreId}\t Date {OrderDate} \t Items: {Items}\n";
         }
     
        

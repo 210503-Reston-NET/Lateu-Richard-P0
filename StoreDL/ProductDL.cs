@@ -45,7 +45,7 @@ namespace StoreDL
            public  Model.Product FindProductByName(string name){              
                  Entity.Product response = _context.Products.FirstOrDefault(product => product.Name == name);
                 if (response == null) return null;
-                return new Model.Product(response.Name,response.Barcode,response.Price,response.AvailableStock);
+                return new Model.Product(response.Id,response.Name,response.Barcode,response.Price,response.AvailableStock);
                               
              }
     }

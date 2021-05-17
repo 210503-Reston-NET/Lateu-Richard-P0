@@ -81,8 +81,8 @@ namespace StoreBL
              _icustomerDL.ViewOrderHistoryByCustomer(customer);
         }
 
-        public void PlaceOrder(Customer customer, List<Item> items){
-            _iorderDL.PlaceOrder(customer, items);
+        public void PlaceOrder(Customer customer,Location location, List<Item> items){
+           // _iorderDL.PlaceOrder(customer, items);
        }
 
         public void DisplayOrderDetails(int order_id){

@@ -5,6 +5,8 @@ namespace StoreBL
 {
     public interface IOrderBL
     {
+
+        Order FindOrderByName(string orderName);
         List<Item> DisplayOrderDetails(int order_id);
        
 
@@ -12,7 +14,10 @@ namespace StoreBL
 
          List<Order> ViewOrderHistoryByCustomer(string  customerName);
 
-            void PlaceOrder(Customer customer, List<Item> items);
+         Order AddOrder(Order order);
+         Item AddItem(Item item);
+
+        void PlaceOrder(Customer customer,Location location, List<Item> items);
          
     }
 }

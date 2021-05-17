@@ -48,9 +48,10 @@ namespace StoreUI
                 Console.WriteLine("\t[32] Find Product By Name");
 
                 Console.WriteLine("[4] order operations");
-                Console.WriteLine("\t[40] get order details ");
-                Console.WriteLine("\t[41] print order history By Location");
-                Console.WriteLine("\t[42] print order history By Customer");
+                Console.WriteLine("\t[40] place order  ");
+                Console.WriteLine("\t[41] get order details ");
+                Console.WriteLine("\t[42] print order history By Location");
+                Console.WriteLine("\t[43] print order history By Customer");
 
                 Console.WriteLine("[5] Go back");
 
@@ -99,12 +100,16 @@ namespace StoreUI
                         Console.WriteLine("Choose the specific action on Order");
                         break;
                     case "40":
+                        doOrder();
+                        break;
+
+                    case "41":
                         PrintOrder();                        
                         break;
-                    case "41":
+                    case "42":
                         ViewHitoryByLocation();
                           break;
-                    case "42":
+                    case "43":
                          ViewHitoryByCustomer();
                          break;
                     case "5":
@@ -324,8 +329,84 @@ namespace StoreUI
     /// </summary>
 
        private void Purchase(){}
-        private void OrderDetails(){}
-        private void PlaceOrder(){}
+        private void doOrder(){
+            Customer customer=customerPrompt("Enter Customer Name:");
+            Location location=LocationPrompt("Enter Location Name:");
+            
+
+            List<Item> items= OrderItemsPrompt("Enter Product Name");  
+
+            _iOrderBL.PlaceOrder(customer,location,items);      
+            
+    
+        }
+
+        private List<Item> OrderItemsPrompt(string input){
+            List<Item> items=new List<Item>();
+            Item item;
+            bool repeat=true;
+            do{
+            item=new Item();
+            string productName=_validate.ValidateName(input);
+            Product product=_iProductBL.FindProductByName(productName);
+            if(!product.Equals(null)){
+                Console.WriteLine("Enter quantity");
+                string s=Console.ReadLine();
+                int qty=int.Parse(s);
+                Console.WriteLine("Enter price unite");
+                string pr=Console.ReadLine();
+                int price=int.Parse(pr);
+                item.ProductId=product.Id;
+                item.Quantity=qty;
+                item.UnitPrice=price;
+
+                items.Add(item);             
+
+            }
+
+            Console.WriteLine("Type 1 to continue or 0 to exit");
+            if (Console.ReadLine()=="0"){
+                repeat=false;
+            }
+
+            }while(repeat);
+
+            return items;
+       
+            
+        }
+
+        private Customer customerPrompt(string prompt){
+            bool repeat=true;
+            Customer customer=new Customer();
+            do{
+            string customerName =_validate.ValidateName(prompt);
+            customer=_icutomerBL.GetCustomerByName(customerName);
+            if(!customer.Equals(null)){
+             repeat=false;
+            }
+
+            }while(repeat);
+
+            return customer;
+        }
+
+         private Location LocationPrompt(string prompt){
+            bool repeat=true;
+            Location location=new Location();
+            do{
+
+            string locationName =_validate.ValidateName(prompt);
+            location=_iLocationBL.FindLocationByName(locationName);
+            if(!location.Equals(null)){
+             repeat=false;
+            }
+
+            }while(repeat);
+
+            return location;
+        }
+
 
         private void PrintOrder(){
             Console.WriteLine("Enter Order ID: ");

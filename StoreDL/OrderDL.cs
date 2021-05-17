@@ -14,6 +14,13 @@ namespace StoreDL
         public OrderDL(Entity.projet0dbContext context){
             this._context=context;
         }
+
+       public Model.Order FindOrderByName(string orderName){
+        Entity.Order response = _context.Orders.FirstOrDefault(order => order.Name == orderName);
+                if (response == null) return null;
+                return new Model.Order(response.Id,response.CustomerId,response.StoreId,response.OrderDate,response.OrderTotal,response.Name);
+
+        }
     
 
         public List<Model.Item> DisplayOrderDetails(int order_id){
@@ -64,8 +71,43 @@ namespace StoreDL
                 ).ToList();
        }
 
-        public void PlaceOrder(Model.Customer customer, List<Model.Item> items){
-         throw new System.Exception("PlaceOrder yet implemented in DL");
+       public Model.Order AddOrder(Model.Order order){
+ _context.Orders.Add(
+                new Entity.Order
+                {                    
+                    
+                    OrderDate = order.OrderDate,
+                    OrderTotal=order.OrderTotal,
+                    CustomerId = order.CustomerId,
+                    StoreId = order.StoreId,
+                    Name=order.Name,
+
+                    
+
+             
+                }
+            );
+           
+            _context.SaveChanges();
+            return order;
+       }
+         public  Model.Item AddItem(Model.Item item){
+         _context.Items.Add(
+             new Entity.Item
+             {
+            UnitPrice=item.UnitPrice,
+            OrderId=item.OrderId,
+            ProductId=item.ProductId,
+            Quantity=item.Quantity, 
+
+             }
+         );
+         _context.SaveChanges();
+         return item;
+         }
+
+        public void PlaceOrder(Model.Customer customer, Model.Location location,List<Model.Item> items){
+        
        }
     }
 }

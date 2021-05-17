@@ -1,5 +1,6 @@
 using StoreDL;
 using StoreModels;
+using System;
 using System.Collections.Generic;
 namespace StoreBL
 {
@@ -14,6 +15,17 @@ namespace StoreBL
            this._locationDL=locationDL;
            this._customerDL=customerDL;
            }
+
+            public Order AddOrder(Order order){
+           return _orderDLAccess.AddOrder(order);
+          }
+         public Item AddItem(Item item){
+            return _orderDLAccess.AddItem(item);     
+          }
+
+          public Order FindOrderByName(string orderName){
+return _orderDLAccess.FindOrderByName(orderName);
+          }
 
          public List<Item> DisplayOrderDetails(int order_id){
 
@@ -36,8 +48,28 @@ namespace StoreBL
           return new List<Order>();
           }
 
-          public void PlaceOrder(Customer customer, List<Item> items){
-            _orderDLAccess.PlaceOrder(customer, items);
+        public string buildCode(){
+          string temp=DateTime.Now.ToString();
+         return temp.Substring(0,17).Replace("/","").Replace(":","").Replace(" ","");
+        }
+
+          public void PlaceOrder(Customer customer, Location location,List<Item> items){
+            Order order=new Order();
+            order.OrderDate=DateTime.Now;
+            order.OrderTotal=0;
+            order.CustomerId=customer.Id;
+            order.StoreId=location.Id;
+            order.Name=buildCode();
+           _orderDLAccess.AddOrder(order);
+            Order newOrder=_orderDLAccess.FindOrderByName(order.Name);
+           
+            foreach(Item item in items){
+               item.OrderId=newOrder.Id;
+               //Console.WriteLine("------------------");
+               //Console.WriteLine(item.ToString());
+              _orderDLAccess.AddItem(item);
+            }
+            
        }
 
     }

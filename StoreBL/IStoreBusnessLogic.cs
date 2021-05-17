@@ -14,7 +14,7 @@ namespace StoreBL
 
           //public  Customer FindCustomerById(int customer_id);
 
-        void PlaceOrder(Customer customer, List<Item> items);
+       void PlaceOrder(Customer customer,Location location, List<Item> items);
          void ViewOrderHistoryByCustomer(Customer customer);
 
 
