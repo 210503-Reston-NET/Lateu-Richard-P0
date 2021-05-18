@@ -106,6 +106,23 @@ namespace StoreDL
          return item;
          }
 
+
+        public Model.Inventory AddToInventory(Model.Inventory inv){
+             _context.Inventories.Add(
+                 new Entity.Inventory{
+                    Quantity=inv.quantity,
+                    StoreId=inv.StoreId,
+                    ProductId=inv.ProductId,
+                    OrderDate=inv.OrderDate,
+                    Inventorytype=inv.Inventorytype,
+                 }
+             );
+
+             _context.SaveChanges();
+             return inv;
+
+         }
+
         public void PlaceOrder(Model.Customer customer, Model.Location location,List<Model.Item> items){
         
        }

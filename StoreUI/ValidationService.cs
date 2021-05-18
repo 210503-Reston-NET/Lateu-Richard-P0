@@ -5,7 +5,8 @@ namespace StoreUI
 {
     public class ValidationService:IValidationService
     {
-        
+        /*Log.Logger = new LoggerConfiguration().WriteTo.File("consoleapp.log").CreateLogger();
+        Log.Information("Hello, world!");*/
          public string ValidateEmail(string prompt)
 {
     bool  repeat;

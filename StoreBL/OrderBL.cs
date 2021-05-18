@@ -62,12 +62,20 @@ return _orderDLAccess.FindOrderByName(orderName);
             order.Name=buildCode();
            _orderDLAccess.AddOrder(order);
             Order newOrder=_orderDLAccess.FindOrderByName(order.Name);
+            Inventory inv=new Inventory();
+            inv.StoreId=location.Id;
+            inv.Inventorytype="OUT";
+            inv.OrderDate=order.OrderDate;        
            
             foreach(Item item in items){
                item.OrderId=newOrder.Id;
+               inv.ProductId=item.ProductId;
+               inv.quantity=item.Quantity;
+  
                //Console.WriteLine("------------------");
                //Console.WriteLine(item.ToString());
               _orderDLAccess.AddItem(item);
+              _orderDLAccess.AddToInventory(inv);
             }
             
        }

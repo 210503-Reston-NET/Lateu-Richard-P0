@@ -1,6 +1,7 @@
 using StoreBL;
 using StoreModels;
 using System;
+using Serilog;
 using System.Collections.Generic;
 namespace StoreUI
 {
@@ -28,7 +29,15 @@ namespace StoreUI
         }
 
         public void   Start(){
-            bool repeat=true;
+            //adding serialog config
+        Log.Logger = new LoggerConfiguration()
+        .MinimumLevel.Verbose()
+        .WriteTo.File("logs/StoreApp.log", rollingInterval: RollingInterval.Day)
+        .CreateLogger();
+
+        //LoggingFactory Log=new LoggingFactory();
+
+        bool repeat=true;
           do{
             Console.WriteLine("Welcome to my ShopApp Menu!");
                 Console.WriteLine("What would you like to do?");
@@ -222,10 +231,18 @@ namespace StoreUI
             Console.WriteLine("New Customer created!");
             Console.WriteLine(newCustomer.ToString());
 
+            Log.Information("New customer created : {a} by {b}",newCustomer.ToString(),"Admin");  
+
+           
+
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+                Log.Error(ex, "Customer creation failed");
+            }
+            finally{
+               Log.CloseAndFlush(); 
             }
         }
 
@@ -336,7 +353,8 @@ namespace StoreUI
 
             List<Item> items= OrderItemsPrompt("Enter Product Name");  
 
-            _iOrderBL.PlaceOrder(customer,location,items);      
+            _iOrderBL.PlaceOrder(customer,location,items); 
+             Log.Information("order created for customer {a} by {b}",customer.Name,"Admin");     
             
     
         }
