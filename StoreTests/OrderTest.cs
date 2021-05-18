@@ -18,7 +18,7 @@ namespace StoreTests
             //Act
                     
             //Assert
-            Assert.Equal(true,order.Items.Count>0);
+            Assert.True(order.Items.Count>0);
 
         }
 
@@ -33,7 +33,7 @@ namespace StoreTests
             item.UnitPrice=price;           
 
             //Assert
-            Assert.Equal(true,price>0);
+            Assert.True(price>0);
 
         }
 
@@ -48,13 +48,13 @@ namespace StoreTests
             Item item=new Item();      
 
             //Act
-            int quantityOrder=200;
-            inventory.product=p1;
+            int quantityOrder=20000;
+            //inventory.product=p1;
             inventory.quantity=5000;
                 
 
             //Assert
-            Assert.Equal(true,quantityOrder<=inventory.quantity);
+            Assert.False(quantityOrder<=inventory.quantity);
 
         }
 

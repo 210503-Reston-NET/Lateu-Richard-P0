@@ -18,7 +18,7 @@ namespace StoreTests
             product.Name=name;           
 
             //Assert
-            Assert.Equal(true,name.Length>5);
+            Assert.True(name.Length>5);
           
 
         }
@@ -35,7 +35,23 @@ namespace StoreTests
             product.Name=name;           
 
             //Assert
-            Assert.Equal(-1,res);
+            Assert.False(-1==res);
+
+        }
+
+        [Fact]
+         public void MinimumStockShouldValidate()
+        {
+            //Arrange
+            int qty=30;
+            int MIN=20;
+            Product product=new Product();     
+         
+            //Act
+             product.AvailableStock=qty;          
+
+            //Assert
+            Assert.True(product.AvailableStock>=MIN);
 
         }
 

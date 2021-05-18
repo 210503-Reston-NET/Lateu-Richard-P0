@@ -22,7 +22,7 @@ namespace StoreTests
             customer.Address=address;           
 
             //Assert
-            Assert.Equal(true,AddressStartingPoint(customer.Address));
+            Assert.True(AddressStartingPoint(customer.Address));
 
         }
 
@@ -37,7 +37,7 @@ namespace StoreTests
             customer.Email=email;           
 
             //Assert
-            Assert.Equal(email,customer.Address);
+            Assert.Contains("@", customer.Email);
 
         }
 
